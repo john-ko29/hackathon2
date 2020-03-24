@@ -39,4 +39,8 @@ class App {
       this.mainElement.appendChild(imgElement);
     }
   }
+
+  start() {
+      this.getMemes()
+  }
 }
