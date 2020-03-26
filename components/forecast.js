@@ -26,8 +26,8 @@ class Forecast {
 
     var formData = new FormData(event.target);
     var weather = formData.get("weather");
-    weather.toLowerCase();
-    weather.charAt(0).toUpperCase();
+    weather = weather.toLowerCase();
+    weather = weather.charAt(0).toUpperCase() + weather.slice(1);
 
     this.formElement.classList.add("hidden");
 
