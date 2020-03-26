@@ -1,4 +1,6 @@
 var mainElement = document.getElementById("main");
+var formElement = document.getElementById("formOptional");
 
-var app = new App(mainElement);
+var forecast = new Forecast(mainElement, formElement);
+var app = new App(mainElement, forecast);
 app.start();

@@ -1,17 +1,18 @@
 class App {
-  constructor(mainElement) {
+  constructor(mainElement, forecast) {
     this.mainElement = mainElement;
+    this.forecast = forecast;
     this.getMemes = this.getMemes.bind(this);
     this.handleGetMemesSuccess = this.handleGetMemesSuccess.bind(this);
     this.handleGetMemesError = this.handleGetMemesError.bind(this);
     this.updateMemes = this.updateMemes.bind(this);
     this.weatherAPI = "2bfe50c866295a179e87fa1e712f39bc";
-    this.gifAPI = "MhQsunQ2WuoHo7CFjWWy0YrOR5aVrP0u"
     this.getWeather = this.getWeather.bind(this);
     this.handleGetWeatherSuccess = this.handleGetWeatherSuccess.bind(this);
     this.handleGetWeatherError = this.handleGetWeatherError.bind(this);
-    this.memesData = null;
-    this.weatherData = null;
+    this.createForecast = this.createForecast.bind(this);
+    this.weather = null;
+    this.memes = null;
   }
 
   getMemes() {
@@ -24,7 +25,10 @@ class App {
   }
 
   handleGetMemesSuccess(memes) {
-    this.updateMemes(memes);
+    console.log(memes.data.memes)
+    this.getWeather();
+    // this.updateMemes(memes);
+    this.memes = memes.data.memes;
   }
 
   handleGetMemesError(error) {
@@ -48,11 +52,12 @@ class App {
   }
 
   start() {
-      this.getMemes()
+      this.getMemes();
+
   }
 
   getWeather() {
-    var url = "http://api.openweathermap.org/data/2.5/group?id=5359777,5368361,5128581,3582383,5475433&units=metric&appid=" + this.weatherAPI;
+    var url = "http://api.openweathermap.org/data/2.5/group?id=5359777,1835847,2643741,3582383,5475433&units=metric&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
       url: url,
@@ -62,13 +67,22 @@ class App {
   }
 
   handleGetWeatherSuccess(weather) {
-    console.log(weather);
-    for(var i = 0; i < weather.length; i++) {
-      console.log(weather[i].weather.main)
+    this.weather = weather.list;
+    console.log(this.weather);
+    for(var i = 0; i < this.weather.length; i++) {
+      console.log("weather", this.weather[i].weather[0].main);
     }
+    this.createForecast(this.weather, this.memes);
   }
 
   handleGetWeatherError(error) {
     console.error(error);
+
+  }
+
+  createForecast(weather, memes) {
+    console.log("weather", weather);
+    console.log("memes", memes);
+    this.forecast.renderForecast(weather, memes);
   }
 }

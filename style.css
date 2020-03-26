@@ -1,6 +1,10 @@
 body {
-  height: 98vh;
+  height: 97vh;
   width: 100%;
+  background-image: url(image/weather-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -10,6 +14,10 @@ body {
 
 .row {
   display: flex
+}
+
+.row:nth-child(2) {
+  height: 90%
 }
 
 .col-1 {
@@ -70,7 +78,49 @@ body {
 .main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100%;
   width: 100%;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 45%;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+.forecast > img {
+  width: 40%;
+
+}
+
+.forecast > h3, .forecast > h1 {
+  margin-top: 0;
+}
+
+.forecast-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.fc-input {
+  text-align: center;
+}
+
+.fc-button {
+  font-size: 1.2rem;
+}
+
+form > .row {
+  margin-top: 10px;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
 }
