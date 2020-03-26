@@ -1,6 +1,5 @@
 body {
   height: 97vh;
-  width: 100%;
   background-image: url(image/weather-background.jpg);
   background-size: cover;
   background-position: center;
@@ -33,7 +32,7 @@ body {
 }
 
 .col-4 {
-  width: 32%;
+  width: 30%;
 }
 
 .col-5 {
@@ -123,4 +122,8 @@ form > .row {
   width: 60%;
   display: flex;
   justify-content: space-around;
+}
+
+.hidden {
+  display: none;
 }
