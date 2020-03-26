@@ -15,7 +15,7 @@ body {
   display: flex
 }
 
-.row:nth-child(2) {
+.container > .row:nth-child(2) {
   height: 90%
 }
 

@@ -8,9 +8,11 @@ class App {
     this.updateMemes = this.updateMemes.bind(this);
     this.weatherAPI = "2bfe50c866295a179e87fa1e712f39bc";
     this.getWeather = this.getWeather.bind(this);
+    this.getCityWeather = this.getCityWeather.bind(this);
     this.handleGetWeatherSuccess = this.handleGetWeatherSuccess.bind(this);
     this.handleGetWeatherError = this.handleGetWeatherError.bind(this);
     this.createForecast = this.createForecast.bind(this);
+    this.handleCityWeatherSuccess = this.handleCityWeatherSuccess.bind(this);
     this.weather = null;
     this.memes = null;
   }
@@ -53,7 +55,7 @@ class App {
 
   start() {
       this.getMemes();
-
+      this.forecast.onSubmit(this.getCityWeather);
   }
 
   getWeather() {
@@ -64,6 +66,21 @@ class App {
       success: this.handleGetWeatherSuccess,
       error: this.handleGetWeatherError
     })
+  }
+
+  getCityWeather(city) {
+    var url = "http://api.openweather.map.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
+    $.ajax({
+      method: "GET",
+      url: url,
+      success: this.handleGetWeatherSuccess,
+      error: this.handleGetWeatherError
+    })
+  }
+
+  handleCityWeatherSuccess(weather) {
+    var cityWeather = weather.list;
+    console.log("city weather", cityWeather);
   }
 
   handleGetWeatherSuccess(weather) {

@@ -1,8 +1,10 @@
 class Forecast {
-  constructor(mainElement, formElement, optionalElement) {
+  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast) {
     this.mainElement = mainElement;
     this.formElement = formElement;
     this.optionalElement = optionalElement;
+    this.cityForm = cityForm;
+    this.cityForecast = cityForecast;
     this.isForecast = true;
     this.renderForecast = this.renderForecast.bind(this);
     this.matchWeather = this.matchWeather.bind(this);
@@ -10,8 +12,24 @@ class Forecast {
     this.selectMemes = this.selectMemes.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleSubmitCity = this.handleSubmitCity.bind(this);
     this.formElement.addEventListener("submit", this.handleSubmit);
     this.formElement.addEventListener("reset", this.handleCancel);
+    this.cityForm.addEventListener("submit", this.handleSubmitCity);
+    this.cityForm.addEventListener("reset", this.handleCancel);
+  }
+
+  onSubmit(getCityWeather) {
+    this.getCityWeather = getCityWeather;
+  }
+
+  handleSubmitCity() {
+    event.preventDefault();
+
+    var formData = new FormData(event.target);
+    var city = formData.get("city");
+    city = city.toLowerCase();
+    city = city.charAt(0).toUpperCase() + city.slice(1);
   }
 
   handleCancel(event) {
