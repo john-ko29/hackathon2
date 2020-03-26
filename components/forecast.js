@@ -1,24 +1,67 @@
 class Forecast {
-  constructor(mainElement, formElement) {
+  constructor(mainElement, formElement, optionalElement) {
     this.mainElement = mainElement;
     this.formElement = formElement;
+    this.optionalElement = optionalElement;
+    this.isForecast = true;
     this.renderForecast = this.renderForecast.bind(this);
     this.matchWeather = this.matchWeather.bind(this);
     this.memesWeather = [];
     this.selectMemes = this.selectMemes.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.formElement.addEventListener("submit", this.handleSubmit);
+    this.formElement.addEventListener("reset", this.handleCancel);
   }
 
   handleCancel(event) {
-
+    event.target.reset();
   }
 
   handleSubmit() {
+    event.preventDefault();
 
+    var optionalElement = document.getElementById("formOptional")
+    var formElement = document.getElementById("forecast-form");
+
+    var formData = new FormData(event.target);
+    var weather = formData.get("weather");
+    weather.toLowerCase();
+    weather.charAt(0).toUpperCase();
+
+    this.formElement.classList.add("hidden");
+
+    var weatherElement = document.createElement("h3");
+    weatherElement.textContent = "Weather: " + weather;
+
+    var customMemeIndex = this.matchWeather(weather);
+
+    var imgElement = document.createElement("img");
+    imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
+
+    var buttonElement = document.createElement("button");
+    buttonElement.classList.add("fc-button");
+    buttonElement.setAttribute("type", "reset");
+    buttonElement.textContent = "Reset";
+    buttonElement.addEventListener("click", function(event) {
+      while (optionalElement.childNodes.length > 2) {
+        optionalElement.removeChild(optionalElement.lastChild);
+      }
+      formElement.classList.remove("hidden");
+    })
+
+    this.optionalElement.appendChild(weatherElement);
+    this.optionalElement.appendChild(imgElement);
+    this.optionalElement.appendChild(buttonElement);
   }
 
-
+  toggleForecast() {
+    if (this.isForecast) {
+      this.isForecast = false;
+    } else {
+      this.isForecast = true;
+    }
+  }
 
   renderForecast(weather, memes) {
     var memeMatch = [];
@@ -66,7 +109,7 @@ class Forecast {
         case 18:
         case 31:
         case 48:
-        case 57:
+        case 56:
         case 59:
         case 64:
         case 78:
