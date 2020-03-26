@@ -30,6 +30,12 @@ class Forecast {
     var city = formData.get("city");
     city = city.toLowerCase();
     city = city.charAt(0).toUpperCase() + city.slice(1);
+
+    this.cityForm.classList.add("hidden");
+
+    var cityWeatherData = this.getCityWeather(city);
+
+    console.log(cityWeatherData);
   }
 
   handleCancel(event) {

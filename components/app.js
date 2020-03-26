@@ -12,7 +12,7 @@ class App {
     this.handleGetWeatherSuccess = this.handleGetWeatherSuccess.bind(this);
     this.handleGetWeatherError = this.handleGetWeatherError.bind(this);
     this.createForecast = this.createForecast.bind(this);
-    this.handleCityWeatherSuccess = this.handleCityWeatherSuccess.bind(this);
+    this.handleGetCityWeatherSuccess = this.handleGetCityWeatherSuccess.bind(this);
     this.weather = null;
     this.memes = null;
   }
@@ -59,7 +59,7 @@ class App {
   }
 
   getWeather() {
-    var url = "http://api.openweathermap.org/data/2.5/group?id=5359777,1835847,2643741,3582383,5475433&units=metric&appid=" + this.weatherAPI;
+    var url = "http://api.openweathermap.org/data/2.5/group?id=5359777,1835847,2643741,3582383&units=metric&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
       url: url,
@@ -69,18 +69,19 @@ class App {
   }
 
   getCityWeather(city) {
-    var url = "http://api.openweather.map.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
       url: url,
-      success: this.handleGetWeatherSuccess,
+      success: this.handleGetCityWeatherSuccess,
       error: this.handleGetWeatherError
     })
   }
 
-  handleCityWeatherSuccess(weather) {
-    var cityWeather = weather.list;
-    console.log("city weather", cityWeather);
+  handleGetCityWeatherSuccess(weather) {
+    console.log("city weather", weather);
+
+    return weather;
   }
 
   handleGetWeatherSuccess(weather) {
