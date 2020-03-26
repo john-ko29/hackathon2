@@ -6,11 +6,19 @@ class Forecast {
     this.matchWeather = this.matchWeather.bind(this);
     this.memesWeather = [];
     this.selectMemes = this.selectMemes.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+  }
+
+  handleCancel(event) {
+
   }
 
   handleSubmit() {
 
   }
+
+
 
   renderForecast(weather, memes) {
     var memeMatch = [];
