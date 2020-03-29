@@ -1,8 +1,10 @@
 class Forecast {
-  constructor(mainElement, formElement, optionalElement) {
+  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast) {
     this.mainElement = mainElement;
     this.formElement = formElement;
     this.optionalElement = optionalElement;
+    this.cityForm = cityForm;
+    this.cityForecast = cityForecast;
     this.isForecast = true;
     this.renderForecast = this.renderForecast.bind(this);
     this.matchWeather = this.matchWeather.bind(this);
@@ -10,8 +12,49 @@ class Forecast {
     this.selectMemes = this.selectMemes.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleSubmitCity = this.handleSubmitCity.bind(this);
     this.formElement.addEventListener("submit", this.handleSubmit);
     this.formElement.addEventListener("reset", this.handleCancel);
+    this.cityForm.addEventListener("submit", this.handleSubmitCity);
+    this.cityForm.addEventListener("reset", this.handleCancel);
+    this.createCityForecast = this.createCityForecast.bind(this);
+  }
+
+  onSubmit(getCityWeather) {
+    this.getCityWeather = getCityWeather;
+  }
+
+  handleSubmitCity() {
+    event.preventDefault();
+
+    var formData = new FormData(event.target);
+    var city = formData.get("city");
+    city = city.toLowerCase();
+    city = city.charAt(0).toUpperCase() + city.slice(1);
+
+    this.cityForm.classList.add("hidden");
+
+    this.getCityWeather(city);
+  }
+
+  createCityForecast(weather) {
+    console.log("new forecast", weather);
+
+    this.cityForm.classList.add("hidden");
+
+    var cityElement = document.createElement("h1");
+    cityElement.textContent = weather.name;
+
+    var weatherElement = document.createElement("h3");
+    weatherElement.textContent = "Weather: " + weather.weather[0].main;
+
+    var cityMatch = this.matchWeather(weather.weather[0].main)
+    var imgElement = document.createElement("img");
+    imgElement.setAttribute("src", this.memesWeather[cityMatch].url);
+
+    this.cityForecast.appendChild(cityElement);
+    this.cityForecast.appendChild(weatherElement);
+    this.cityForecast.appendChild(imgElement);
   }
 
   handleCancel(event) {
@@ -38,6 +81,10 @@ class Forecast {
 
     var imgElement = document.createElement("img");
     imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
+    if ( customMemeIndex ===4) {
+      var h3noMatchElement = document.createElement("h3");
+      h3noMatchElement.textContent = "Mismatched Weather";x
+    }
 
     var buttonElement = document.createElement("button");
     buttonElement.classList.add("fc-button");
@@ -51,16 +98,11 @@ class Forecast {
     })
 
     this.optionalElement.appendChild(weatherElement);
+    if(h3noMatchElement) {
+      this.optionalElement.appendChild(h3noMatchElement);
+    }
     this.optionalElement.appendChild(imgElement);
     this.optionalElement.appendChild(buttonElement);
-  }
-
-  toggleForecast() {
-    if (this.isForecast) {
-      this.isForecast = false;
-    } else {
-      this.isForecast = true;
-    }
   }
 
   renderForecast(weather, memes) {
