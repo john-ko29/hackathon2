@@ -72,6 +72,7 @@ class App {
     var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
+      dataType: "json",
       url: url,
       success: this.handleGetCityWeatherSuccess,
       error: this.handleGetWeatherError
@@ -80,7 +81,7 @@ class App {
 
   handleGetCityWeatherSuccess(weather) {
     console.log("city weather", weather);
-
+    this.forecast.createCityForecast(weather);
     return weather;
   }
 

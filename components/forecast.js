@@ -17,6 +17,7 @@ class Forecast {
     this.formElement.addEventListener("reset", this.handleCancel);
     this.cityForm.addEventListener("submit", this.handleSubmitCity);
     this.cityForm.addEventListener("reset", this.handleCancel);
+    this.createCityForecast = this.createCityForecast.bind(this);
   }
 
   onSubmit(getCityWeather) {
@@ -33,9 +34,15 @@ class Forecast {
 
     this.cityForm.classList.add("hidden");
 
-    var cityWeatherData = this.getCityWeather(city);
+    this.getCityWeather(city);
+  }
 
-    console.log(cityWeatherData);
+  createCityForecast(weather) {
+    console.log("new forecast", weather);
+    var cityElement = document.createElement("h1");
+    cityElement.textContent = weather.name;
+
+    var
   }
 
   handleCancel(event) {
@@ -77,14 +84,6 @@ class Forecast {
     this.optionalElement.appendChild(weatherElement);
     this.optionalElement.appendChild(imgElement);
     this.optionalElement.appendChild(buttonElement);
-  }
-
-  toggleForecast() {
-    if (this.isForecast) {
-      this.isForecast = false;
-    } else {
-      this.isForecast = true;
-    }
   }
 
   renderForecast(weather, memes) {
