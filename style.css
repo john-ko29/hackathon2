@@ -141,4 +141,8 @@ input {
   .forecast-form > .row {
     margin-top: 0;
   }
+  .forecast > * {
+    margin-top: 0;
+    margin-bottom: 2px
+  }
 }
