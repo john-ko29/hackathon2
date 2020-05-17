@@ -117,6 +117,10 @@ body {
   font-size: 1.2rem;
 }
 
+.img-margin {
+  margin-bottom: 1rem;
+}
+
 form > .row {
   margin-top: 10px;
   width: 60%;

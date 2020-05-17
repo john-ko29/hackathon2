@@ -13,6 +13,7 @@ class App {
     this.handleGetWeatherError = this.handleGetWeatherError.bind(this);
     this.createForecast = this.createForecast.bind(this);
     this.handleGetCityWeatherSuccess = this.handleGetCityWeatherSuccess.bind(this);
+    this.handleGetCityWeatherError = this.handleGetCityWeatherError.bind(this);
     this.weather = null;
     this.memes = null;
   }
@@ -95,8 +96,12 @@ class App {
   }
 
   handleGetWeatherError(error) {
+    this.forecast.createCityForecast(undefined);
     console.error(error);
+  }
 
+  handleGetCityWeatherError(error) {
+    console.error(error);
   }
 
   createForecast(weather, memes) {
