@@ -1,6 +1,6 @@
 # C220 Hackathon Weather-Meme Forecast
 
--A hackathon using two different APIs from imgMeme and OpenWeather and combining them together
+A hackathon using two different APIs from imgMeme and OpenWeather and combining them together to create a weather forecast with a meme matching with that weather.
 
 ### Requirements
 - Combine **at least** 2 public APIs via AJAX requests and present their combined information in a web application of your design.
