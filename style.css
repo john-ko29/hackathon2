@@ -145,6 +145,10 @@ input {
   text-align: center;
 }
 
+.image-back {
+  width: 100%;
+  height: 100%
+}
 
 .forecast-card:hover {
   transform: rotateY(180deg)
@@ -164,7 +168,7 @@ input {
 
 @media screen and (max-width: 600px) {
   .forecast {
-    height: 25%;
+    height: 30%;
     width: 45%;
   }
 
@@ -174,5 +178,11 @@ input {
   .forecast > * {
     margin-top: 0;
     margin-bottom: 2px
+  }
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .forecast {
+    height: 30%
   }
 }

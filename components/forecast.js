@@ -157,7 +157,9 @@ class Forecast {
       currentTemperature.textContent = weather[k].main.temp + "C";
 
       var imgElement = document.createElement("img");
+      imgElement.classList.add("image-back")
       imgElement.setAttribute("src", this.memesWeather[memeMatch[k]].url)
+
 
       var card = document.createElement("div");
       card.classList.add("forecast-card");
