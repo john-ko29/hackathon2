@@ -15,8 +15,7 @@ A hackathon using two different APIs from imgMeme and OpenWeather and combining 
 * Mobile responsive on iphone6/7/8 and iPad
 
 ### Screenshot
-![Image of Meme Forecast]
-(/image/weather-background.jpg)
+![Image of Meme Forecast](./image/weather-background.jpg)
 
 ### Developement
 1. Clone the repository
