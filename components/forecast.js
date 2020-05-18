@@ -72,11 +72,23 @@ class Forecast {
     var cityMatch = this.matchWeather(weather.weather[0].main)
     var imgElement = document.createElement("img");
     imgElement.classList.add("img-margin")
+    imgElement.classList.add("image-back")
     imgElement.setAttribute("src", this.memesWeather[cityMatch].url);
+    var card = document.createElement("div");
+    card.classList.add("forecast-card");
+    var cardFront = document.createElement("div");
+    cardFront.classList.add("forecast-card-front");
+    var cardBack = document.createElement("div");
+    cardBack.classList.add("forecast-card-back");
+    card.appendChild(cardFront);
+    card.appendChild(cardBack);
 
-    this.cityForecast.appendChild(cityElement);
-    this.cityForecast.appendChild(weatherElement);
-    this.cityForecast.appendChild(imgElement);
+    cardFront.appendChild(cityElement);
+    cardFront.appendChild(weatherElement);
+
+    cardBack.appendChild(imgElement);
+
+    this.cityForecast.appendChild(card)
     this.cityForecast.appendChild(buttonElement)
   }
 
@@ -173,15 +185,10 @@ class Forecast {
       cardFront.appendChild(cityLocation);
       cardFront.appendChild(currentWeather);
       cardFront.appendChild(currentTemperature);
-      cardFront.appendChild(imgElement);
 
       cardBack.appendChild(imgElement)
 
       forecast.appendChild(card);
-      // forecast.appendChild(cityLocation);
-      // forecast.appendChild(currentWeather);
-      // forecast.appendChild(currentTemperature);
-      // forecast.appendChild(imgElement);
 
       this.mainElement.appendChild(forecast);
     }

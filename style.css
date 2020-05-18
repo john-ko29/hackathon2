@@ -186,3 +186,10 @@ input {
     height: 30%
   }
 }
+
+@media screen and (max-width: 1366px) {
+  button {
+    background-color: grey;
+    border: 1px solid black;
+  }
+}
