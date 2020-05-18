@@ -40,6 +40,19 @@ class Forecast {
   createCityForecast(weather) {
     console.log("new forecast", weather);
 
+    var buttonElement = document.createElement("button");
+    buttonElement.classList.add("fc-button");
+    buttonElement.setAttribute("type", "reset");
+    buttonElement.textContent = "Reset";
+
+    if(weather === undefined) {
+      var noCity = document.createElement("h1");
+      noCity.textContent = "No Matching City"
+      this.cityForecast.appendChild(noCity);
+      this.cityForecast.appendChild(buttonElement)
+      return;
+    }
+
     this.cityForm.classList.add("hidden");
 
     var cityElement = document.createElement("h1");
@@ -80,17 +93,18 @@ class Forecast {
     var customMemeIndex = this.matchWeather(weather);
 
     var imgElement = document.createElement("img");
+    imgElement.classList.add("img-margin")
     imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
-    if ( customMemeIndex ===4) {
+    if (customMemeIndex === 4) {
       var h3noMatchElement = document.createElement("h3");
-      h3noMatchElement.textContent = "Mismatched Weather";x
+      h3noMatchElement.textContent = "Mismatched Weather";
     }
 
     var buttonElement = document.createElement("button");
     buttonElement.classList.add("fc-button");
     buttonElement.setAttribute("type", "reset");
     buttonElement.textContent = "Reset";
-    buttonElement.addEventListener("click", function(event) {
+    buttonElement.addEventListener("click", function() {
       while (optionalElement.childNodes.length > 2) {
         optionalElement.removeChild(optionalElement.lastChild);
       }
@@ -98,7 +112,7 @@ class Forecast {
     })
 
     this.optionalElement.appendChild(weatherElement);
-    if(h3noMatchElement) {
+    if(h3noMatchElement !== undefined) {
       this.optionalElement.appendChild(h3noMatchElement);
     }
     this.optionalElement.appendChild(imgElement);
