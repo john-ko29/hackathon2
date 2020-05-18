@@ -49,6 +49,7 @@ class Forecast {
       var noCity = document.createElement("h1");
       noCity.textContent = "No Matching City"
       this.cityForecast.appendChild(noCity);
+      this.cityForecast.appendChild(buttonElement)
       return;
     }
 
