@@ -159,10 +159,27 @@ class Forecast {
       var imgElement = document.createElement("img");
       imgElement.setAttribute("src", this.memesWeather[memeMatch[k]].url)
 
-      forecast.appendChild(cityLocation);
-      forecast.appendChild(currentWeather);
-      forecast.appendChild(currentTemperature);
-      forecast.appendChild(imgElement);
+      var card = document.createElement("div");
+      card.classList.add("forecast-card");
+      var cardFront = document.createElement("div");
+      cardFront.classList.add("forecast-card-front");
+      var cardBack = document.createElement("div");
+      cardBack.classList.add("forecast-card-back");
+      card.appendChild(cardFront);
+      card.appendChild(cardBack);
+
+      cardFront.appendChild(cityLocation);
+      cardFront.appendChild(currentWeather);
+      cardFront.appendChild(currentTemperature);
+      cardFront.appendChild(imgElement);
+
+      cardBack.appendChild(imgElement)
+
+      forecast.appendChild(card);
+      // forecast.appendChild(cityLocation);
+      // forecast.appendChild(currentWeather);
+      // forecast.appendChild(currentTemperature);
+      // forecast.appendChild(imgElement);
 
       this.mainElement.appendChild(forecast);
     }
