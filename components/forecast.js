@@ -44,8 +44,16 @@ class Forecast {
     buttonElement.classList.add("fc-button");
     buttonElement.setAttribute("type", "reset");
     buttonElement.textContent = "Reset";
+    buttonElement.addEventListener("click", () => {
+      while (this.cityForecast.childNodes.length > 2) {
+        this.cityForecast.removeChild(this.cityForecast.lastChild);
+      }
+      this.cityForm.classList.remove("hidden");
+    })
 
     if(weather === undefined) {
+      console.log(this.cityForecast.lastChild)
+
       var noCity = document.createElement("h1");
       noCity.textContent = "No Matching City"
       this.cityForecast.appendChild(noCity);
@@ -63,11 +71,13 @@ class Forecast {
 
     var cityMatch = this.matchWeather(weather.weather[0].main)
     var imgElement = document.createElement("img");
+    imgElement.classList.add("img-margin")
     imgElement.setAttribute("src", this.memesWeather[cityMatch].url);
 
     this.cityForecast.appendChild(cityElement);
     this.cityForecast.appendChild(weatherElement);
     this.cityForecast.appendChild(imgElement);
+    this.cityForecast.appendChild(buttonElement)
   }
 
   handleCancel(event) {
