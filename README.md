@@ -16,7 +16,7 @@ A hackathon using two different APIs from imgMeme and OpenWeather and combining 
 
 ### Screenshot
 ![Image of Meme Forecast]
-(image/weather-background.jpg)
+(/image/weather-background.jpg)
 
 ### Developement
 1. Clone the repository
