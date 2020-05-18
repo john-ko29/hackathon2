@@ -162,6 +162,12 @@ input {
   backface-visibility: hidden;
 }
 
+.forecast-card-front  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .forecast-card-back {
   transform: rotateY(180deg);
 }
