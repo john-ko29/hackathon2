@@ -58,7 +58,7 @@ class App {
   }
 
   getWeather() {
-    var url = "http://api.openweathermap.org/data/2.5/group?id=5359777,1835847,2643741,3582383&units=metric&appid=" + this.weatherAPI;
+    var url = "https://api.openweathermap.org/data/2.5/group?id=5359777,1835847,2643741,3582383&units=metric&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
       url: url,
@@ -68,7 +68,7 @@ class App {
   }
 
   getCityWeather(city) {
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + this.weatherAPI;
     $.ajax({
       method: "GET",
       dataType: "json",
