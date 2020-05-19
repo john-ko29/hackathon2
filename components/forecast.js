@@ -114,7 +114,7 @@ class Forecast {
     this.formElement.classList.add("hidden");
 
     var weatherElement = document.createElement("h3");
-    weatherElement.textContent = "Weather: " + weather;
+    weatherElement.textContent = weather;
 
     var customMemeIndex = this.matchWeather(weather);
 
@@ -122,10 +122,6 @@ class Forecast {
     imgElement.classList.add("img-margin");
     imgElement.classList.add("weather-image");
     imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
-    if (customMemeIndex === 4) {
-      var h3noMatchElement = document.createElement("h3");
-      h3noMatchElement.textContent = "Mismatched Weather";
-    }
 
     var buttonElement = document.createElement("button");
     buttonElement.classList.add("fc-button");
@@ -139,9 +135,6 @@ class Forecast {
     })
 
     this.optionalElement.appendChild(weatherElement);
-    if(h3noMatchElement !== undefined) {
-      this.optionalElement.appendChild(h3noMatchElement);
-    }
     this.optionalElement.appendChild(imgElement);
     this.optionalElement.appendChild(buttonElement);
   }

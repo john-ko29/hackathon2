@@ -112,7 +112,13 @@ body {
   text-align: center;
 }
 
+.select-input {
+  background-color: grey;
+}
+
 .fc-button {
+  background-color: grey;
+  border: 2px solid black;
   font-size: 1.2rem;
   cursor: pointer;
 }
@@ -132,10 +138,6 @@ form > .row {
   display: none;
 }
 
-input {
-  width: 80%;
-}
-
 .forecast-card {
   position: relative;
   width: 100%;
@@ -148,17 +150,21 @@ input {
 .image-back {
   object-fit: contain;
   height: 100%;
+  max-width: 100%;
 }
 
 .weather-image {
-  object-fit: cover;
-  height: 50%;
+  object-fit: contain;
+  height: 70%;
+  max-height: 70%;
+  max-width: 100%;
 }
 
 .city-image {
   object-fit: contain;
   height: 80%;
-
+  max-height: 80%;
+  max-width: 100%;
 }
 
 .forecast-card:hover {
@@ -205,6 +211,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 5px solid cornflowerblue;
 }
 
 .modal-button {
@@ -244,5 +251,16 @@ input {
     margin: 3px;
     background-color: grey;
     border: 1px solid black;
+  }
+
+  .invalid-modal {
+    width: 60%;
+    height: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .select-input {
+    transform: scale(1.5);
   }
 }
