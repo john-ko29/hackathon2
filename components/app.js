@@ -1,7 +1,9 @@
 class App {
-  constructor(mainElement, forecast) {
+  constructor(mainElement, forecast, invalidOkay, invalidModal) {
     this.mainElement = mainElement;
     this.forecast = forecast;
+    this.invalidOkay = invalidOkay;
+    this.invalidModal = invalidModal;
     this.getMemes = this.getMemes.bind(this);
     this.handleGetMemesSuccess = this.handleGetMemesSuccess.bind(this);
     this.handleGetMemesError = this.handleGetMemesError.bind(this);
@@ -14,6 +16,7 @@ class App {
     this.createForecast = this.createForecast.bind(this);
     this.handleGetCityWeatherSuccess = this.handleGetCityWeatherSuccess.bind(this);
     this.handleGetCityWeatherError = this.handleGetCityWeatherError.bind(this);
+    this.addHidden  = this.addHidden.bind(this);
     this.weather = null;
     this.memes = null;
   }
@@ -52,9 +55,14 @@ class App {
     }
   }
 
+  addHidden() {
+    this.invalidModal.classList.add("hidden");
+  }
+
   start() {
       this.getMemes();
       this.forecast.onSubmit(this.getCityWeather);
+    this.invalidOkay.addEventListener("click", this.addHidden);
   }
 
   getWeather() {

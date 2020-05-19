@@ -1,10 +1,11 @@
 class Forecast {
-  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast) {
+  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast, invalidModal) {
     this.mainElement = mainElement;
     this.formElement = formElement;
     this.optionalElement = optionalElement;
     this.cityForm = cityForm;
     this.cityForecast = cityForecast;
+    this.invalidModal = invalidModal;
     this.isForecast = true;
     this.renderForecast = this.renderForecast.bind(this);
     this.matchWeather = this.matchWeather.bind(this);
@@ -29,6 +30,12 @@ class Forecast {
 
     var formData = new FormData(event.target);
     var city = formData.get("city");
+
+    if(city === "") {
+      this.invalidModal.classList.remove("hidden");
+      return;
+    }
+
     city = city.toLowerCase();
     city = city.charAt(0).toUpperCase() + city.slice(1);
 
@@ -69,7 +76,7 @@ class Forecast {
     var cityMatch = this.matchWeather(weather.weather[0].main)
     var imgElement = document.createElement("img");
     imgElement.classList.add("img-margin")
-    imgElement.classList.add("image-back")
+    imgElement.classList.add("city-image")
     imgElement.setAttribute("src", this.memesWeather[cityMatch].url);
     var card = document.createElement("div");
     card.classList.add("forecast-card");
@@ -112,7 +119,8 @@ class Forecast {
     var customMemeIndex = this.matchWeather(weather);
 
     var imgElement = document.createElement("img");
-    imgElement.classList.add("img-margin")
+    imgElement.classList.add("img-margin");
+    imgElement.classList.add("weather-image");
     imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
     if (customMemeIndex === 4) {
       var h3noMatchElement = document.createElement("h3");
