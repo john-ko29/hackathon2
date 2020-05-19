@@ -29,6 +29,11 @@ class Forecast {
 
     var formData = new FormData(event.target);
     var city = formData.get("city");
+
+    if(city === "") {
+      console.log("Need to input something");
+    }
+
     city = city.toLowerCase();
     city = city.charAt(0).toUpperCase() + city.slice(1);
 
