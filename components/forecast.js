@@ -1,10 +1,11 @@
 class Forecast {
-  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast) {
+  constructor(mainElement, formElement, optionalElement, cityForm, cityForecast, invalidModal) {
     this.mainElement = mainElement;
     this.formElement = formElement;
     this.optionalElement = optionalElement;
     this.cityForm = cityForm;
     this.cityForecast = cityForecast;
+    this.invalidModal = invalidModal;
     this.isForecast = true;
     this.renderForecast = this.renderForecast.bind(this);
     this.matchWeather = this.matchWeather.bind(this);
@@ -31,7 +32,8 @@ class Forecast {
     var city = formData.get("city");
 
     if(city === "") {
-      console.log("Need to input something");
+      this.invalidModal.classList.remove("hidden");
+      return;
     }
 
     city = city.toLowerCase();
