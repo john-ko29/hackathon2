@@ -69,7 +69,7 @@ class Forecast {
     var cityMatch = this.matchWeather(weather.weather[0].main)
     var imgElement = document.createElement("img");
     imgElement.classList.add("img-margin")
-    imgElement.classList.add("image-back")
+    imgElement.classList.add("city-image")
     imgElement.setAttribute("src", this.memesWeather[cityMatch].url);
     var card = document.createElement("div");
     card.classList.add("forecast-card");
@@ -112,7 +112,8 @@ class Forecast {
     var customMemeIndex = this.matchWeather(weather);
 
     var imgElement = document.createElement("img");
-    imgElement.classList.add("img-margin")
+    imgElement.classList.add("img-margin");
+    imgElement.classList.add("weather-image");
     imgElement.setAttribute("src", this.memesWeather[customMemeIndex].url);
     if (customMemeIndex === 4) {
       var h3noMatchElement = document.createElement("h3");

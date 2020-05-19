@@ -89,15 +89,14 @@ body {
   height: 45%;
   border: 2px solid white;
   box-sizing: border-box;
-}
-
-.forecast img {
-  width: 40%;
-
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(128, 128, 128, 0.4);
 }
 
 .forecast  h3, .forecast  h1 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .forecast-form {
@@ -115,6 +114,7 @@ body {
 
 .fc-button {
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .img-margin {
@@ -146,8 +146,19 @@ input {
 }
 
 .image-back {
-  width: 100%;
-  height: 100%
+  object-fit: contain;
+  height: 100%;
+}
+
+.weather-image {
+  object-fit: cover;
+  height: 50%;
+}
+
+.city-image {
+  object-fit: contain;
+  height: 80%;
+
 }
 
 .forecast-card:hover {
@@ -169,6 +180,9 @@ input {
 }
 
 .forecast-card-back {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   transform: rotateY(180deg);
 }
 
@@ -194,7 +208,9 @@ input {
 }
 
 @media screen and (max-width: 1366px) {
-  button {
+  .fc-button {
+    font-size: 1rem;
+    margin: 3px;
     background-color: grey;
     border: 1px solid black;
   }
