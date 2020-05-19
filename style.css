@@ -1,6 +1,6 @@
 body {
   height: 97vh;
-  background-image: url(image/weather-background.jpg);
+  background-image: url(./image/weather-background.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
