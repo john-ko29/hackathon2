@@ -38,8 +38,6 @@ class Forecast {
   }
 
   createCityForecast(weather) {
-    console.log("new forecast", weather);
-
     var buttonElement = document.createElement("button");
     buttonElement.classList.add("fc-button");
     buttonElement.setAttribute("type", "reset");
@@ -52,7 +50,6 @@ class Forecast {
     })
 
     if(weather === undefined) {
-      console.log(this.cityForecast.lastChild)
 
       var noCity = document.createElement("h1");
       noCity.textContent = "No Matching City"
@@ -143,8 +140,6 @@ class Forecast {
 
   renderForecast(weather, memes) {
     var memeMatch = [];
-    console.log("render weather", weather)
-    console.log("render memes", memes);
 
     this.selectMemes(memes);
 
@@ -152,7 +147,6 @@ class Forecast {
       var weatherCondition = weather[i].weather[0].main;
       memeMatch.push(this.matchWeather(weatherCondition))
     }
-    console.log(memeMatch);
 
     for (var k = 0; k < weather.length; k++) {
       var forecast = document.createElement("div");
@@ -212,7 +206,6 @@ class Forecast {
           break;
       }
     }
-    console.log("weather memes", this.memesWeather);
   }
 
   matchWeather(currentWeather) {
