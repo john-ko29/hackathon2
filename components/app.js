@@ -28,20 +28,18 @@ class App {
   }
 
   handleGetMemesSuccess(memes) {
-    console.log(memes.data.memes)
     this.getWeather();
     // this.updateMemes(memes);
     this.memes = memes.data.memes;
   }
 
   handleGetMemesError(error) {
-    console.log(error);
+    console.error(error);
   }
 
   updateMemes(memes) {
     this.mainElement.innerHTML = "";
     this.memesData = memes.data.memes;
-    console.log(this.memesData);
     for (var i = 0; i < this.memesData.length; i++) {
       var imgElement = document.createElement("img")
       imgElement.setAttribute("src", this.memesData[i].url);
@@ -81,17 +79,12 @@ class App {
   }
 
   handleGetCityWeatherSuccess(weather) {
-    console.log("city weather", weather);
     this.forecast.createCityForecast(weather);
     return weather;
   }
 
   handleGetWeatherSuccess(weather) {
     this.weather = weather.list;
-    console.log(this.weather);
-    for(var i = 0; i < this.weather.length; i++) {
-      console.log("weather", this.weather[i].weather[0].main);
-    }
     this.createForecast(this.weather, this.memes);
   }
 
@@ -105,8 +98,6 @@ class App {
   }
 
   createForecast(weather, memes) {
-    console.log("weather", weather);
-    console.log("memes", memes);
     this.forecast.renderForecast(weather, memes);
   }
 }
