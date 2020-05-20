@@ -154,6 +154,8 @@ class Forecast {
       forecast.classList.add("forecast");
       forecast.classList.add("col-4");
 
+      forecast.addEventListener('touchstart', process_touchstart, false)
+
       var cityLocation = document.createElement("h1");
       cityLocation.textContent = weather[k].name;
 
@@ -165,8 +167,7 @@ class Forecast {
 
       var imgElement = document.createElement("img");
       imgElement.classList.add("image-back")
-      imgElement.setAttribute("src", this.memesWeather[memeMatch[k]].url)
-
+      imgElement.setAttribute("src", this.memesWeather[memeMatch[k]].url);
 
       var card = document.createElement("div");
       card.classList.add("forecast-card");
