@@ -154,8 +154,6 @@ class Forecast {
       forecast.classList.add("forecast");
       forecast.classList.add("col-4");
 
-      forecast.addEventListener('touchstart', process_touchstart, false)
-
       var cityLocation = document.createElement("h1");
       cityLocation.textContent = weather[k].name;
 
