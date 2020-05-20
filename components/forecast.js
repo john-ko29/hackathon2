@@ -154,6 +154,8 @@ class Forecast {
       forecast.classList.add("forecast");
       forecast.classList.add("col-4");
 
+      forecast.setAttribute("ontouchstart", "")
+
       var cityLocation = document.createElement("h1");
       cityLocation.textContent = weather[k].name;
 
