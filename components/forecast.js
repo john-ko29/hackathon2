@@ -108,6 +108,9 @@ class Forecast {
 
     var formData = new FormData(event.target);
     var weather = formData.get("weather");
+    if(weather === null) {
+      return;
+    }
     weather = weather.toLowerCase();
     weather = weather.charAt(0).toUpperCase() + weather.slice(1);
 

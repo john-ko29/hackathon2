@@ -287,6 +287,9 @@ form > .row {
   }
 }
 @media screen and (max-width: 667px) {
+  .city-input {
+    width: 80%
+  }
   .help-modal  {
     font-size: 1rem;
   }
