@@ -1,9 +1,11 @@
 class App {
-  constructor(mainElement, forecast, invalidOkay, invalidModal) {
+  constructor(mainElement, forecast, invalidOkay, invalidModal, helpConfirm, helpModal) {
     this.mainElement = mainElement;
     this.forecast = forecast;
     this.invalidOkay = invalidOkay;
     this.invalidModal = invalidModal;
+    this.helpConfirm = helpConfirm;
+    this.helpModal = helpModal;
     this.getMemes = this.getMemes.bind(this);
     this.handleGetMemesSuccess = this.handleGetMemesSuccess.bind(this);
     this.handleGetMemesError = this.handleGetMemesError.bind(this);
@@ -57,12 +59,14 @@ class App {
 
   addHidden() {
     this.invalidModal.classList.add("hidden");
+    this.helpModal.classList.add("hidden");
   }
 
   start() {
       this.getMemes();
       this.forecast.onSubmit(this.getCityWeather);
-    this.invalidOkay.addEventListener("click", this.addHidden);
+      this.invalidOkay.addEventListener("click", this.addHidden);
+      this.helpConfirm.addEventListener("click", this.addHidden);
   }
 
   getWeather() {
