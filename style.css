@@ -286,9 +286,9 @@ form > .row {
     transform: scale(1.5);
   }
 }
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 700px) {
   .city-input {
-    width: 80%
+    width: 80%;
   }
   .help-modal  {
     font-size: 1rem;
