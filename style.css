@@ -169,7 +169,7 @@ form > .row {
   max-width: 100%;
 }
 
-.forecast-card:hover .forecast-card:active {
+.forecast-card:hover {
   transform: rotateY(180deg)
 }
 
@@ -242,6 +242,7 @@ form > .row {
 }
 
 @media screen and (max-width: 600px) {
+
   .forecast {
     height: 30%;
     width: 45%;
@@ -263,6 +264,10 @@ form > .row {
 }
 
 @media screen and (max-width: 1366px) {
+  .forecast-card:active {
+  transform: rotateY(180deg)
+  }
+
   .fc-button {
     font-size: 1rem;
     margin: 3px;
