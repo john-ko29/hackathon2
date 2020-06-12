@@ -143,6 +143,8 @@ class Forecast {
   }
 
   renderForecast(weather, memes) {
+    this.mainElement.removeChild(this.mainElement.lastChild);
+
     var memeMatch = [];
 
     this.selectMemes(memes);
