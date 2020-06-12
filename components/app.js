@@ -63,10 +63,20 @@ class App {
   }
 
   start() {
-      this.getMemes();
-      this.forecast.onSubmit(this.getCityWeather);
-      this.invalidOkay.addEventListener("click", this.addHidden);
-      this.helpConfirm.addEventListener("click", this.addHidden);
+    var forecast = document.createElement("div");
+    forecast.classList.add("forecast");
+    forecast.classList.add("col-4");
+    forecast.classList.add("spinner-forecast");
+
+    var spinnerElement = document.createElement('div');
+    spinnerElement.classList.add("spinner");
+
+    forecast.appendChild(spinnerElement);
+    this.mainElement.appendChild(forecast);
+    this.getMemes();
+    this.forecast.onSubmit(this.getCityWeather);
+    this.invalidOkay.addEventListener("click", this.addHidden);
+    this.helpConfirm.addEventListener("click", this.addHidden);
   }
 
   getWeather() {

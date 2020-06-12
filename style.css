@@ -204,6 +204,12 @@ form > .row {
   animation: spin 2s linear infinite;
 }
 
+.spinner-forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
